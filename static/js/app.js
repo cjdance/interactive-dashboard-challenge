@@ -99,5 +99,7 @@ function buildPlots(id) {
             yaxis: {title: 'Sample Values'},
             width: window.width
         };
-    })
+
+        Plotly.newPlot('bubble', bubbleData, bubbleLayout);
+    }).catch(err => console.log(error));
 };
