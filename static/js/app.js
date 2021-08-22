@@ -28,6 +28,7 @@ function pageDefault() {
 function newData(newID) {
     buildPlots(newID);
     demographics(newID);
+    buildGauge(newID);
 };
 
 function buildPlots(id) {
@@ -128,7 +129,7 @@ function buildGauge(id) {
     d3.json("data/samples.json").then((data) => {
         var metadata = data.metadata;
         var filterData = metadata.filter(stock => stock.id == id);
-        console.log(filterData[0].wfreq);
+        // console.log(filterData[0].wfreq);
 
         var gaugeTrace = {
             domain: {x:[0,1], y:[0,1]},
