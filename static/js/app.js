@@ -1,9 +1,9 @@
 function pageDefault() {    
     var dataSelect = d3.select("#selDataset");
 
-    d3.json("data/samples.json").then((data) => {
+    d3.json("data/samples.json").then(data => {
         var names = data.names;
-        console.log(names);
+        //console.log(names);
 
         dataSelect.selectAll("option")
             .data(names)
@@ -20,7 +20,7 @@ function pageDefault() {
     }).catch(error => console.log(error));
 };
 
-pageDefault();
+
 
 
 
@@ -31,10 +31,10 @@ function newData(newID) {
 
 function buildPlots(id) {
     d3.json("data/samples.json").then((data) => {
-        var filterData = data.samples.filter((sample) => sample.id === id);
+        var filterData = data.samples.filter(sample => sample.id == id);
         var result = filterData[0];
-        console.log(filterData);
-        console.log(result);
+        //console.log(filterData);
+        //console.log(result);
 
         var topTen = [];
         for (i=0; i<result.sample_values.length; i++) {
@@ -44,17 +44,17 @@ function buildPlots(id) {
                 label: result.otu_labels[i]
             });
         }
-        console.log(topTen);
+        //console.log(topTen);
 
         var topTenSort = topTen.sort(function sortFUnction(a,b) {
             return b.value - a.value;
         }).slice(0,10);
-        console.log(topTenSort);
+        //console.log(topTenSort);
 
         var topTenHorizontal = topTenSort.sort(function sortFunction(a,b) {
             return a.value - b.value;
         })
-        console.log(topTenHorizontal);
+        //console.log(topTenHorizontal);
 
         var colors = ['#fff100', '#ff8c00', '#e81123', '#ec008c', '#68217a', '#00188f', '#00bcf2', '#00b294', '#009e49', '#bad80a']
         var traceHorizontal = {
@@ -103,5 +103,24 @@ function buildPlots(id) {
         };
 
         Plotly.newPlot('bubble', bubbleData, bubbleLayout);
-    }).catch(err => console.log(error));
+    }).catch(error => console.log(error));
 };
+
+function demographics(id) {
+    d3.json("data/samples.json").then((data) => {
+        var metadata = data.metadata;
+        var filterData = metadata.filter(stock => stock.id == id);
+        var selection = d3.select("#sample-metadata");
+        selection.html("");
+
+        console.log(filterData);
+
+        Object.entries(filterData[0]).forEach(([key, value]) => {
+            selection.append("h5")
+                .text(`${key}: ${value}`);
+        });
+});
+}
+
+
+pageDefault();
