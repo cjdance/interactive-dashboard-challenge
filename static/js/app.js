@@ -78,5 +78,19 @@ function buildPlots(id) {
           };
 
         Plotly.newPlot("bar", horizontalData, horizontalLayout);
+
+        var bubbleTrace = {
+            x: result.otu_ids,
+            y: result.sample_values,
+            mode: 'markers',
+            marker: {
+                size: result.sample_values,
+                color: result.otu_ids,
+                colorscale: 'Jet'
+            },
+            text: result.otu_labels
+        };
+
+        
     })
 };
