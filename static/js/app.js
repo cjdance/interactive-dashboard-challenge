@@ -58,9 +58,9 @@ function buildPlots(id) {
         var traceHorizontal = {
             type: "bar",
             orientation: 'h',
-            x: reversed.map(row=> row.value),
-            y: reversed.map(row => row.id),
-            text: reversed.map(row => row.label),
+            x: topTenHorizontal.map(row=> row.value),
+            y: topTenHorizontal.map(row => row.id),
+            text: topTenHorizontal.map(row => row.label),
             mode: 'markers',
             marker: {
                 color: colors
@@ -76,5 +76,7 @@ function buildPlots(id) {
             width: 500,
             height: 500
           };
+
+        Plotly.newPlot("bar", horizontalData, horizontalLayout);
     })
 };
