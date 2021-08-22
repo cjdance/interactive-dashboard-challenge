@@ -26,3 +26,12 @@ function newData(newID) {
     buildPlots(newID);
     demographics(newID);
 };
+
+function buildPlots(id) {
+    d3.json("data/samples.json").then((data) => {
+        var filterData = data.samples.filter((sample) => sample.id === id);
+        var result = filterData[0];
+        console.log(filterData);
+        console.log(result);
+    })
+}
