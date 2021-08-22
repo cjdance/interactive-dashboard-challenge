@@ -68,5 +68,13 @@ function buildPlots(id) {
           };
         
         var horizontalData = [traceHorizontal];
+
+        var horizontalLayout = {
+            title: `<span style='font-size:1em; color:#00bcf2'><b>Top 10 OTUs for Subject ${id}<b></span>`,
+            xaxis: {autorange: true, title: 'Sample Values'},
+            yaxis: {autorange: true},
+            width: 500,
+            height: 500
+          };
     })
 };
