@@ -91,6 +91,13 @@ function buildPlots(id) {
             text: result.otu_labels
         };
 
-        
+        var bubbleData = [bubbleTrace];
+
+        var bubbleLayout = {
+            title: `<span style='font-size:1em; color:#00bcf2'><b>OTU Data for Subject ${id}<b></span>`,
+            xaxis: {title:'OTU ID'},
+            yaxis: {title: 'Sample Values'},
+            width: window.width
+        };
     })
 };
