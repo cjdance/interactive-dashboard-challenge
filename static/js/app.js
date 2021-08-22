@@ -21,3 +21,8 @@ function pageDefault() {
 };
 
 pageDefault();
+
+function newData(newID) {
+    buildPlots(newID);
+    demographics(newID);
+};
