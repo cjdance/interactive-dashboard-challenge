@@ -43,5 +43,10 @@ function buildPlots(id) {
             });
         }
         console.log(topTen);
+
+        var topTenSort = topTen.sort(function sortFUnction(a,b) {
+            return b.value - a.value;
+        }).slice(0,10);
+        console.log(topTenSort);
     })
 };
