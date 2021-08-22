@@ -48,5 +48,25 @@ function buildPlots(id) {
             return b.value - a.value;
         }).slice(0,10);
         console.log(topTenSort);
+
+        var topTenHorizontal = topTenSort.sort(function sortFunction(a,b) {
+            return a.value - b.value;
+        })
+        console.log(topTenHorizontal);
+
+        var colors = ['#fff100', '#ff8c00', '#e81123', '#ec008c', '#68217a', '#00188f', '#00bcf2', '#00b294', '#009e49', '#bad80a']
+        var traceHorizontal = {
+            type: "bar",
+            orientation: 'h',
+            x: reversed.map(row=> row.value),
+            y: reversed.map(row => row.id),
+            text: reversed.map(row => row.label),
+            mode: 'markers',
+            marker: {
+                color: colors
+            }
+          };
+        
+        var horizontalData = [traceHorizontal];
     })
 };
