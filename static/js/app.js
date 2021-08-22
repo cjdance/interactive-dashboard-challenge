@@ -16,6 +16,7 @@ function pageDefault() {
 
         buildPlots(startUp);
         demographics(startUp);
+        buildGauge(startUp);
         
     }).catch(error => console.log(error));
 };
@@ -103,6 +104,7 @@ function buildPlots(id) {
         };
 
         Plotly.newPlot('bubble', bubbleData, bubbleLayout);
+
     }).catch(error => console.log(error));
 };
 
@@ -113,14 +115,50 @@ function demographics(id) {
         var selection = d3.select("#sample-metadata");
         selection.html("");
 
-        console.log(filterData);
+        //console.log(filterData);
 
         Object.entries(filterData[0]).forEach(([key, value]) => {
             selection.append("h5")
                 .text(`${key}: ${value}`);
         });
-});
-}
+    });
+};
 
+function buildGauge(id) {
+    d3.json("data/samples.json").then((data) => {
+        var metadata = data.metadata;
+        var filterData = metadata.filter(stock => stock.id == id);
+        console.log(filterData[0].wfreq);
+
+        var gaugeTrace = {
+            domain: {x:[0,1], y:[0,1]},
+            value: filterData[0].wfreq,
+            title: `<span style='font-size:1em; color:#00bcf2'><b>Washes Per Week for Subject ${id}<b></span>`,
+            type: "indicator",
+            mode: "gauge+number",
+            gauge: {
+                axis: {range: [null, 15]},
+                steps: [
+                    {range: [0,1], color: "lightgray"},
+                    {range: [1,2], color: "gray"}
+                ],
+                threshold: {
+                    line: {color: "purple", width: 5},
+                    thickness: 0.75,
+                    value: filterData[0].wfreq
+                }
+            }
+        };
+
+        var gaugeData = [gaugeTrace];
+
+        var gaugeLayout = {
+            width: 500,
+            height: 500
+        };
+    
+        Plotly.newPlot("gauge", gaugeData, gaugeLayout);
+    });
+};
 
 pageDefault();
