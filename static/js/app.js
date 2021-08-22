@@ -33,5 +33,15 @@ function buildPlots(id) {
         var result = filterData[0];
         console.log(filterData);
         console.log(result);
+
+        var topTen = [];
+        for (i=0; i<result.sample_values.length; i++) {
+            topTen.push({
+                id: `OTU ${result.otu_ids[i]}`,
+                value: result.sample_values[i],
+                label: result.otu_labels[i]
+            });
+        }
+        console.log(topTen);
     })
-}
+};
