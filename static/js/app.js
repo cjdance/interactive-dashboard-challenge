@@ -74,7 +74,8 @@ function buildPlots(id) {
         var horizontalData = [traceHorizontal];
 
         var horizontalLayout = {
-            title: `<span style='font-size:1em; color:#00bcf2'><b>Top 10 OTUs for Subject ${id}<b></span>`,
+            title: `Top 10 OTUs for Subject ${id}`,
+            // `<span style='font-size:1em; color:#00bcf2'><b>Top 10 OTUs for Subject ${id}<b></span>`,
             xaxis: {autorange: true, title: 'Sample Values'},
             yaxis: {autorange: true},
             width: 500,
@@ -98,7 +99,8 @@ function buildPlots(id) {
         var bubbleData = [bubbleTrace];
 
         var bubbleLayout = {
-            title: `<span style='font-size:1em; color:#00bcf2'><b>OTU Data for Subject ${id}<b></span>`,
+            title: `OTU Data for Subject ${id}`,
+            // `<span style='font-size:1em; color:#00bcf2'><b>OTU Data for Subject ${id}<b></span>`,
             xaxis: {title:'OTU ID'},
             yaxis: {title: 'Sample Values'},
             width: window.width
@@ -134,7 +136,8 @@ function buildGauge(id) {
         var gaugeTrace = {
             domain: {x:[0,1], y:[0,1]},
             value: filterData[0].wfreq,
-            title: `<span style='font-size:1em; color:#00bcf2'><b>Washes Per Week for Subject ${id}<b></span>`,
+            title: `Washes Per Week for Subject ${id}`,
+            // `<span style='font-size:1em; color:#00bcf2'><b>Washes Per Week for Subject ${id}<b></span>`,
             type: "indicator",
             mode: "gauge+number",
             gauge: {
