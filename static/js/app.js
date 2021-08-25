@@ -143,8 +143,9 @@ function buildGauge(id) {
             gauge: {
                 axis: {range: [null, 15]},
                 steps: [
-                    {range: [0,1], color: "lightgray"},
-                    {range: [1,2], color: "gray"}
+                    {range: [0,5], color: "lightgray"},
+                    {range: [5,10], color: "darkgray"},
+                    {range: [10,15], color: "gray"}
                 ],
                 threshold: {
                     line: {color: "purple", width: 5},
